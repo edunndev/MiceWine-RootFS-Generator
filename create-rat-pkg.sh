@@ -30,7 +30,7 @@ symlink2sh() {
 }
 
 export INIT_DIR=$PWD
-export APP_ROOT_DIR=/data/data/com.micewine.emu/
+export APP_ROOT_DIR=/data/data/com.mwqr.mwwine/
 
 export PACKAGE_NAME=$1
 export PACKAGE_PRETTY_NAME=$2
@@ -48,13 +48,13 @@ fi
 
 if [ "$9" != "0" ]; then
   echo ""
-  echo "Creating Package '$PACKAGE_NAME-$PACKAGE_VERSION-$PACKAGE_ARCHITECTURE.rat'..."
+  echo "Creating Package '$PACKAGE_NAME-$PACKAGE_VERSION-$PACKAGE_ARCHITECTURE.mwwine'..."
 fi
 
 export WORKDIR="$DESTDIR_PKG"
 
 if [ -d "$DESTDIR_PKG/data/" ]; then
-	WORKDIR="$DESTDIR_PKG/data/data/com.micewine.emu/"
+	WORKDIR="$DESTDIR_PKG/data/data/com.mwqr.mwwine/"
 fi
 
 cd $WORKDIR
@@ -67,4 +67,4 @@ echo "vkDriverLib=$PACKAGE_VK_DRIVER_LIB" >> pkg-header
 
 symlink2sh "files/" 
 
-7z -tzip -mx=5 a "$OUTDIR/$PACKAGE_NAME-$PACKAGE_VERSION-$PACKAGE_ARCHITECTURE.rat" &> /dev/zero
+7z -tzip -mx=5 a "$OUTDIR/$PACKAGE_NAME-$PACKAGE_VERSION-$PACKAGE_ARCHITECTURE.mwwine" &> /dev/zero
