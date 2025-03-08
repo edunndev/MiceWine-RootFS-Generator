@@ -9,7 +9,7 @@ if [ "$1" != "aarch64" ] && [ "$1" != "x86_64" ]; then
   exit 0
 fi
 
-export PREFIX=/data/data/com.micewine.emu/files/usr
+export PREFIX=/data/data/com.mwqr.mwwine/files/usr
 export INIT_DIR=$PWD
 export GIT_SHORT_SHA=$(git rev-parse --short HEAD)
 
@@ -18,9 +18,9 @@ if [ ! -d "$INIT_DIR/built-pkgs" ]; then
   exit 0
 fi
 
-export ROOTFS_PKGS=$(find "$INIT_DIR/built-pkgs" -name "*$1*.rat" | sort)
-export WINE_PKG=$(find "$INIT_DIR/built-pkgs" -name "*wine*.rat")
-export WINE_UTILS_PKG="$INIT_DIR/Wine-Utils-($GIT_SHORT_SHA)-any.rat"
+export ROOTFS_PKGS=$(find "$INIT_DIR/built-pkgs" -name "*$1*.mwwine" | sort)
+export WINE_PKG=$(find "$INIT_DIR/built-pkgs" -name "*wine*.mwwine")
+export WINE_UTILS_PKG="$INIT_DIR/Wine-Utils-($GIT_SHORT_SHA)-any.mwwine"
 
 if [ ! -f "$WINE_UTILS_PKG" ]; then
   ./download-external-dependencies.sh
