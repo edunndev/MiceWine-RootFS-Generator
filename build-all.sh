@@ -304,7 +304,7 @@ setupPackages()
 	mkdir -p "$PREFIX/include"
 
 	for package in $PACKAGES; do
-		packageFullPath=$(find "$INIT_DIR/built-pkgs/$package-"*"$ARCHITECTURE.rat" 2> /dev/zero)
+		packageFullPath=$(find "$INIT_DIR/built-pkgs/$package-"*"$ARCHITECTURE.mwwine" 2> /dev/zero)
 		packageCommitFullPath=$(ls "$INIT_DIR/built-pkgs/$package-"*"$ARCHITECTURE.commit" 2> /dev/zero)
 
 		if [ -f "$packageFullPath" ]; then
@@ -330,8 +330,8 @@ installBuiltPackage()
 {
 	local package=$1
 
-	if [ ! -e "$APP_ROOT_DIR/packages/$(basename $package .rat)" ]; then
-		echo "-- Installing '$(basename $package .rat)'"
+	if [ ! -e "$APP_ROOT_DIR/packages/$(basename $package .mwwine)" ]; then
+		echo "-- Installing '$(basename $package .mwwine)'"
 		mkdir -p $APP_ROOT_DIR/packages
 
 		unzip -o "$package" -d "$APP_ROOT_DIR" &> /dev/zero
@@ -401,7 +401,7 @@ compileAll()
 			fi
 		fi
 
-		if [ -f "$INIT_DIR/built-pkgs/$package-$pkgVersion-$ARCHITECTURE.rat" ]; then
+		if [ -f "$INIT_DIR/built-pkgs/$package-$pkgVersion-$ARCHITECTURE.mwwine" ]; then
 			echo "-- [$packageNum/$packageCount] Package '$package' already built."
 		else
 			echo "-- [$packageNum/$packageCount] Compiling Package '$package'..."
@@ -421,12 +421,12 @@ compileAll()
 				exit 0
 			fi
 
-			if [ ! -d "$packageDestDirPkg/data/data/com.micewine.emu" ]; then
+			if [ ! -d "$packageDestDirPkg/data/data/com.mwqr.mwwine" ]; then
 				echo "- [$packageNum/$packageCount] Package: '"$package"' failed to compile. Check logs"
 				exit 0
 			fi
 
-			cp -rf "$packageDestDirPkg/data/data/com.micewine.emu/"* "/data/data/com.micewine.emu"
+			cp -rf "$packageDestDirPkg/data/data/com.mwqr.mwwine/"* "/data/data/com.mwqr.mwwine"
 
 			find "$packageDestDirPkg" -type f > "$INIT_DIR/logs/$package-package-files.txt"
 
@@ -481,7 +481,7 @@ case $1 in "aarch64"|"x86_64")
 	exit 0
 esac
 
-export APP_ROOT_DIR=/data/data/com.micewine.emu
+export APP_ROOT_DIR=/data/data/com.mwqr.mwwine
 export PREFIX=$APP_ROOT_DIR/files/usr
 
 if [ ! -e "$PREFIX" ]; then
